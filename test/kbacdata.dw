@@ -1,0 +1,10 @@
+quiet
+
+seed 1
+
+simulation snps emap=kbac.emap
+simulation affection baseline=0.1
+simulation haplotypes 1000000
+simulation subjects units=10000 caseUnrelateds=1 controlUnrelateds=1
+
+save kbac kbac.kbac

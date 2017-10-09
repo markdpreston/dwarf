@@ -1,0 +1,9 @@
+Package: KBAC
+Version: 0.01
+Date: 2011-04-12
+Title: KBAC association test 
+Author: Dajiang Liu and Suzanne Leal
+Maintainer: Gao Wang <wangow@gmail.com>  
+Depends: R (>= 2.9.0) 
+Description: see doi:10.1371/journal.pgen.1001156  
+License: GPL (version 3 or later) 

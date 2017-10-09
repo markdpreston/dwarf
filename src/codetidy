@@ -1,0 +1,3 @@
+astyle -a -s4 -w -Y -p -H -U -j -c -k3 -z2 kbac.cpp kbac.h
+
+

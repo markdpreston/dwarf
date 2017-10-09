@@ -1,0 +1,6 @@
+quiet
+load bim time.bim
+load fam time.fam
+load bed time.bed
+association 1 1
+data save file=time.dat

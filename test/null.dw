@@ -1,0 +1,124 @@
+#quiet
+seed 1
+time
+
+system rm -rf null
+system mkdir -p null
+
+simulation snps emap=null.emap
+simulation affection baseline=0.01
+simulation haplotypes 100000
+simulation subjects units=500 caseSiblings=1 unknownParents=2
+save ped null/family.ped
+save bed null/family.bed
+save fam null/family.fam
+save bim null/family.bim
+save map null/family.map
+tdt         1 1 data=family file=cout
+regression  1 1 data=family file=cout
+regression  1 1 data=family file=cout method=combined
+single      1 1 data=family file=cout method=family
+score       1 1 data=family file=cout method=family
+
+pseudo
+save ped null/pseudo.ped
+save bed null/pseudo.bed
+save fam null/pseudo.fam
+save bim null/pseudo.bim
+save map null/pseudo.map
+association 1 1 data=pseudo file=cout
+regression  1 1 data=pseudo file=cout
+regression  1 1 data=pseudo file=cout method=combined
+single      1 1 data=pseudo file=cout
+score       1 1 data=pseudo file=cout
+kbac        1 1 data=pseudo file=cout
+calpha      1 1 data=pseudo file=cout
+skat        1 1 data=pseudo file=cout
+
+simulation replace 1000 controls
+save ped null/dichotomy.ped
+save bed null/dichotomy.bed
+save fam null/dichotomy.fam
+save bim null/dichotomy.bim
+save map null/dichotomy.map
+association 1 1 data=dichotomy file=cout
+regression  1 1 data=dichotomy file=cout
+regression  1 1 data=dichotomy file=cout method=combined
+single      1 1 data=dichotomy file=cout
+score       1 1 data=dichotomy file=cout
+kbac        1 1 data=dichotomy file=cout
+calpha      1 1 data=dichotomy file=cout
+skat        1 1 data=dichotomy file=cout
+
+data save file=null/create.m
+clear
+load ped null/family.ped
+load map null/family.map
+tdt         1 1 data=family file=cout
+regression  1 1 data=family file=cout
+regression  1 1 data=family file=cout method=combined
+single      1 1 data=family file=cout method=family
+score       1 1 data=family file=cout method=family
+
+clear
+load ped null/pseudo.ped
+load map null/pseudo.map
+association 1 1 data=pseudo file=cout
+regression  1 1 data=pseudo file=cout
+regression  1 1 data=pseudo file=cout method=combined
+single      1 1 data=pseudo file=cout
+score       1 1 data=pseudo file=cout
+kbac        1 1 data=pseudo file=cout
+calpha      1 1 data=pseudo file=cout
+skat        1 1 data=pseudo file=cout
+
+clear
+load ped null/dichotomy.ped
+load map null/dichotomy.map
+association 1 1 data=dichotomy file=cout
+regression  1 1 data=dichotomy file=cout
+regression  1 1 data=dichotomy file=cout method=combined
+single      1 1 data=dichotomy file=cout
+score       1 1 data=dichotomy file=cout
+kbac        1 1 data=dichotomy file=cout
+calpha      1 1 data=dichotomy file=cout
+skat        1 1 data=dichotomy file=cout
+
+data save file=null/ped.m
+clear
+load fam null/family.fam
+load bim null/family.bim
+load bed null/family.bed
+tdt         1 1 data=family file=cout
+regression  1 1 data=family file=cout
+regression  1 1 data=family file=cout method=combined
+single      1 1 data=family file=cout method=family
+score       1 1 data=family file=cout method=family
+
+clear
+load fam null/pseudo.fam
+load bim null/pseudo.bim
+load bed null/pseudo.bed
+association 1 1 data=pseudo file=cout
+regression  1 1 data=pseudo file=cout
+regression  1 1 data=pseudo file=cout method=combined
+single      1 1 data=pseudo file=cout
+score       1 1 data=pseudo file=cout
+kbac        1 1 data=pseudo file=cout
+calpha      1 1 data=pseudo file=cout
+skat        1 1 data=pseudo file=cout
+
+clear
+load fam null/dichotomy.fam
+load bim null/dichotomy.bim
+load bed null/dichotomy.bed
+association 1 1 data=dichotomy file=cout
+regression  1 1 data=dichotomy file=cout
+regression  1 1 data=dichotomy file=cout method=combined
+single      1 1 data=dichotomy file=cout
+score       1 1 data=dichotomy file=cout
+kbac        1 1 data=dichotomy file=cout
+calpha      1 1 data=dichotomy file=cout
+skat        1 1 data=dichotomy file=cout
+
+data save file=null/bed.m

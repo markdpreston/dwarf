@@ -1,0 +1,16 @@
+quiet
+
+seed 1
+
+simulation snps emap=plink.emap
+simulation affection baseline=0.1
+simulation haplotypes 1000000
+simulation subjects units=500000 caseUnrelateds=1 controlUnrelateds=1
+
+save kbac plink.kbac
+save fam plink.fam
+save map plink.map
+save ped plink.ped
+save bim plink.bim
+save bed plink.bed
+

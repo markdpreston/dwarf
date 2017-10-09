@@ -1,0 +1,8 @@
+quiet
+time
+load map time.map
+load ped time.ped
+time
+association 1 1
+time
+data save file=time.dat

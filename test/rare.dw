@@ -1,0 +1,40 @@
+quiet
+time
+echo
+
+seed 1
+
+simulation snps emap=rare.emap
+simulation affection baseline=0.1
+simulation haplotypes 1000000
+simulation subjects units=2000 caseSiblings=1 unknownParents=2
+
+echo Family
+tdt         1 1 test
+single      1 1 test method=family
+score       1 1 test method=family
+kbac        1 1 test               permutations=1000
+regression  1 1 test
+echo
+
+echo Psuedo Case Control
+pseudo
+association 1 1 test
+single      1 1 test
+score       1 1 test
+calpha      1 1 test
+kbac        1 1 test permutations=1000
+regression  1 1 test
+echo
+
+echo Case Control
+simulation  replace 200 controls
+association 1 1 test
+single      1 1 test
+score       1 1 test
+calpha      1 1 test
+kbac        1 1 test permutations=1000
+regression  1 1 test
+
+time
+echo
